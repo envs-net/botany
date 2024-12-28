@@ -15,7 +15,7 @@ botany is designed for unix-based systems. Clone into a local directory using `$
 
 Run with `$ python3 botany.py`.
 
-*Note - botany.py must initially be run by the user who cloned/unzipped botany.py - this initalizes the shared data file permissions.*
+*Note - botany.py must initially be run by the user who cloned/unzipped botany.py - this initializes the shared data file permissions.*
 
 Water your seed to get started. You can come and go as you please and your plant continues to grow.
 
@@ -69,3 +69,9 @@ A once-weekly cron on clear_weekly_users.py should be set up to keep weekly visi
 
 ## credits
 * thank you [tilde.town](http://tilde.town/) for inspiration!
+
+## praise for botany
+![Screencap](https://tilde.town/~curiouser/praise1.png)
+![Screencap](https://tilde.town/~curiouser/praise2.png)
+![Screencap](https://tilde.town/~curiouser/praise3.png)
+

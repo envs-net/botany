@@ -29,7 +29,7 @@ class CursedMenu(object):
         except curses.error:
             # Not all terminals support this functionality.
             # When the error is ignored the screen will look a little uglier, but that's not terrible
-            # So in order to keep botany as accesible as possible to everyone, it should be safe to ignore the error.
+            # So in order to keep botany as accessible as possible to everyone, it should be safe to ignore the error.
             pass
         self.screen.keypad(1)
         self.plant = this_plant
@@ -51,7 +51,7 @@ class CursedMenu(object):
         screen_thread = threading.Thread(target=self.update_plant_live, args=())
         screen_thread.daemon = True
         screen_thread.start()
-        # Recusive lock to prevent both threads from drawing at the same time
+        # Recursive lock to prevent both threads from drawing at the same time
         self.screen_lock = threading.RLock()
         self.screen.clear()
         self.show(["water","look","garden","visit", "instructions"], title=' botany ', subtitle='options')
@@ -564,7 +564,7 @@ class CursedMenu(object):
             # get plant description before printing
             output_string = self.get_plant_description(this_plant)
             growth_multiplier = 1 + (0.2 * (this_plant.generation-1))
-            output_string += "Generation: {}\nGrowth rate: {}x".format(self.plant.generation, growth_multiplier)
+            output_string += "Generation: {}\nGrowth rate: {:.1f}x".format(self.plant.generation, growth_multiplier)
             self.draw_info_text(output_string)
             self.infotoggle = 1
         else:
@@ -623,7 +623,7 @@ class CursedMenu(object):
         if not self.plant.dead:
             if self.plant.stage == max_stage:
                 harvest_text += "Congratulations! You raised your plant to its final stage of growth.\n"
-                harvest_text += "Your next plant will grow at a speed of: {}x\n".format(1 + (0.2 * self.plant.generation))
+                harvest_text += "Your next plant will grow at a speed of: {:.1f}x\n".format(1 + (0.2 * self.plant.generation))
         harvest_text += "If you harvest your plant you'll start over from a seed.\nContinue? (Y/n)"
         self.draw_info_text(harvest_text)
         try:
@@ -633,7 +633,7 @@ class CursedMenu(object):
         if user_in == -1: # Input comes from pipe/file and is closed
             raise IOError
 
-        if user_in in [ord('Y'), ord('y')]:
+        if user_in in [ord('Y'), ord('y'), 10]:
             self.plant.start_over()
         else:
             pass
